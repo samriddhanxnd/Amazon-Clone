@@ -1,0 +1,1615 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3e6e6;
+            color: #111;
+        }
+
+        /* HEADER */
+
+        .header {
+            min-height: 65px;
+            background-color: #131921;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 8px 18px;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ff9900;
+        }
+
+        .delivery {
+            font-size: 12px;
+            line-height: 17px;
+            white-space: nowrap;
+        }
+
+        .delivery strong {
+            font-size: 14px;
+        }
+
+        .search {
+            display: flex;
+            height: 42px;
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .search select {
+            width: 55px;
+            border: none;
+            background-color: #eee;
+            padding: 5px;
+        }
+
+        .search input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search button {
+            width: 55px;
+            border: none;
+            background-color: #febd69;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .header-item {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .header-item strong {
+            font-size: 14px;
+        }
+
+        .cart {
+            font-size: 28px;
+            white-space: nowrap;
+        }
+
+
+        /* NAVIGATION */
+
+        .nav {
+            height: 45px;
+            background-color: #232f3e;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 0 20px;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav strong {
+            font-size: 15px;
+        }
+
+
+        /* HERO BANNER */
+
+        .hero {
+            height: 220px;
+            background: linear-gradient(to bottom, #cde7ff, #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+        }
+
+
+        /* MAIN CONTAINER */
+
+        .container {
+            width: 95%;
+            margin: auto;
+        }
+
+        .section {
+            margin: 25px 0;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+
+        /* GREAT INDIAN FESTIVAL */
+
+        .festival-section {
+            width: 100%;
+            background-color: white;
+            padding: 22px;
+            box-shadow: 0 1px 4px #aaa;
+        }
+
+        .festival-header {
+            background: linear-gradient(135deg, #ff9900, #e91e63);
+            color: white;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .festival-header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .festival-header p {
+            font-size: 15px;
+        }
+
+        .festival-date {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .festival-date strong {
+            font-size: 20px;
+        }
+
+        .festival-date span {
+            font-size: 13px;
+        }
+
+
+        /* FESTIVAL INFORMATION */
+
+        .festival-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 1px solid #ddd;
+        }
+
+        .festival-info div {
+            padding: 18px;
+            border-right: 1px solid #ddd;
+        }
+
+        .festival-info div:last-child {
+            border-right: none;
+        }
+
+        .festival-info strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .festival-info p {
+            color: #555;
+            font-size: 13px;
+        }
+
+
+        /* FESTIVAL PRODUCTS */
+
+        .festival-products {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .festival-card {
+            border: 1px solid #ddd;
+            padding: 12px;
+            background-color: white;
+        }
+
+        .festival-card:hover {
+            box-shadow: 0 2px 8px #aaa;
+            transform: translateY(-2px);
+            transition: 0.2s;
+        }
+
+        .deal-tag {
+            display: inline-block;
+            background-color: #cc0c39;
+            color: white;
+            padding: 5px 7px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .festival-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .festival-card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .starting {
+            color: #555;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .festival-price {
+            font-size: 23px;
+            font-weight: bold;
+            margin: 3px 0;
+        }
+
+        .festival-discount {
+            color: #cc0c39;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .bank-offer {
+            background-color: #e7f3e7;
+            color: #067d62;
+            padding: 7px;
+            margin-top: 10px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .festival-small {
+            color: #555;
+            font-size: 11px;
+            margin-top: 8px;
+        }
+
+
+        /* FESTIVAL BOTTOM */
+
+        .festival-bottom {
+            margin-top: 20px;
+            padding: 18px;
+            background-color: #f3f3f3;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .festival-bottom strong {
+            font-size: 17px;
+        }
+
+        .festival-bottom span {
+            flex: 1;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .festival-bottom button {
+            background-color: #ffd814;
+            border: 1px solid #fcd200;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+        /* PREVIOUSLY VIEWED */
+
+        .previous {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .previous-card {
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 1px 3px #bbb;
+        }
+
+        .previous-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+        }
+
+        .previous-card h3 {
+            margin-top: 10px;
+        }
+
+
+        /* GENERAL PRODUCT CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 18px;
+            min-height: 340px;
+            box-shadow: 0 1px 3px #bbb;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 210px;
+            object-fit: contain;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .discount {
+            color: #cc0c39;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #cc0c39;
+            color: white;
+            padding: 5px 8px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .link {
+            color: #007185;
+            margin-top: 12px;
+            display: block;
+        }
+
+
+        /* CATEGORY ROW */
+
+        .category-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 1px 3px #bbb;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .category-card h3 {
+            margin-bottom: 10px;
+        }
+
+
+        /* FOOTER */
+
+        .back-top {
+            background-color: #37475a;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: #232f3e;
+            color: white;
+            padding: 45px 8%;
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .footer-column p {
+            color: #ddd;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .footer-column p:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #666;
+            margin-top: 40px;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .footer-logo span {
+            color: #ff9900;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: #bbb;
+            font-size: 13px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media(max-width: 1200px) {
+
+            .festival-products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .festival-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width: 900px) {
+
+            .header {
+                flex-wrap: wrap;
+            }
+
+            .search {
+                order: 5;
+                flex-basis: 100%;
+                max-width: none;
+            }
+
+            .cards,
+            .previous {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .festival-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .festival-date {
+                text-align: left;
+            }
+
+            .festival-bottom {
+                flex-wrap: wrap;
+            }
+
+            .footer-columns {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 550px) {
+
+            .cards,
+            .previous,
+            .category-row,
+            .festival-products {
+                grid-template-columns: 1fr;
+            }
+
+            .festival-info {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .header-item {
+                display: none;
+            }
+
+            .festival-header h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="logo">
+            amazon<span>.in</span>
+        </div>
+
+        <div class="delivery">
+            Deliver to<br>
+            <strong>Samriddh</strong><br>
+            India
+        </div>
+
+        <div class="search">
+
+            <select>
+                <option>All</option>
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Books</option>
+                <option>Home</option>
+            </select>
+
+            <input type="text" placeholder="Search Amazon.in">
+
+            <button>🔍</button>
+
+        </div>
+
+        <div class="header-item">
+            Hello, Samriddh<br>
+            <strong>Account & Lists</strong>
+        </div>
+
+        <div class="header-item">
+            Returns<br>
+            <strong>& Orders</strong>
+        </div>
+
+        <div class="cart">
+            🛒
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav">
+
+        <strong>☰ All</strong>
+        <span>Today's Deals</span>
+        <span>Coupons</span>
+        <span>Electronics</span>
+        <span>Fresh</span>
+        <span>Grocery</span>
+        <span>Best Sellers</span>
+        <span>Mobiles</span>
+        <span>Fashion</span>
+        <span>Home & Kitchen</span>
+        <span>Books</span>
+        <span>Customer Service</span>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Great Indian Festival</h1>
+
+            <p>Big savings across thousands of products</p>
+
+        </div>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- GREAT INDIAN FESTIVAL -->
+
+        <section class="festival-section">
+
+            <div class="festival-header">
+
+                <div>
+
+                    <h1>Great Indian Festival</h1>
+
+                    <p>
+                        Deals revealed • Biggest savings of the year
+                    </p>
+
+                </div>
+
+                <div class="festival-date">
+
+                    <strong>
+                        Starts 8 October 2026
+                    </strong>
+
+                    <span>
+                        Prime early access • 7 October
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- FESTIVAL INFORMATION -->
+
+            <div class="festival-info">
+
+                <div>
+
+                    <strong>🎉 Deals Revealed</strong>
+
+                    <p>
+                        Blockbuster Deals, Mega Deals & more
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>💳 SBI Bank Offer</strong>
+
+                    <p>
+                        10% instant discount on eligible SBI cards
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>⭐ Prime Members</strong>
+
+                    <p>
+                        Extra benefits on selected deals
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>🚚 Fast Delivery</strong>
+
+                    <p>
+                        Great deals across thousands of products
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FESTIVAL PRODUCTS -->
+
+            <div class="festival-products">
+
+
+                <div class="festival-card">
+
+                    <div class="deal-tag">
+                        BLOCKBUSTER DEAL
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80">
+
+                    <h3>Smart Watches</h3>
+
+                    <p class="starting">
+                        Starting from
+                    </p>
+
+                    <div class="festival-price">
+                        ₹1,499
+                    </div>
+
+                    <div class="festival-discount">
+                        Up to 45% off
+                    </div>
+
+                    <div class="bank-offer">
+                        💳 Extra 10% off with SBI Cards
+                    </div>
+
+                    <p class="festival-small">
+                        No Cost EMI available
+                    </p>
+
+                </div>
+
+
+                <div class="festival-card">
+
+                    <div class="deal-tag">
+                        MEGA DEAL
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80">
+
+                    <h3>Headphones</h3>
+
+                    <p class="starting">
+                        Starting from
+                    </p>
+
+                    <div class="festival-price">
+                        ₹999
+                    </div>
+
+                    <div class="festival-discount">
+                        Up to 60% off
+                    </div>
+
+                    <div class="bank-offer">
+                        💳 ₹500 instant bank discount
+                    </div>
+
+                    <p class="festival-small">
+                        Limited time offer
+                    </p>
+
+                </div>
+
+
+                <div class="festival-card">
+
+                    <div class="deal-tag">
+                        DEALS REVEALED
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80">
+
+                    <h3>Running Shoes</h3>
+
+                    <p class="starting">
+                        Starting from
+                    </p>
+
+                    <div class="festival-price">
+                        ₹799
+                    </div>
+
+                    <div class="festival-discount">
+                        Up to 55% off
+                    </div>
+
+                    <div class="bank-offer">
+                        💳 10% off with SBI Cards
+                    </div>
+
+                    <p class="festival-small">
+                        Selling fast
+                    </p>
+
+                </div>
+
+
+                <div class="festival-card">
+
+                    <div class="deal-tag">
+                        BIG SAVINGS
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80">
+
+                    <h3>Cameras</h3>
+
+                    <p class="starting">
+                        Starting from
+                    </p>
+
+                    <div class="festival-price">
+                        ₹29,999
+                    </div>
+
+                    <div class="festival-discount">
+                        Up to 35% off
+                    </div>
+
+                    <div class="bank-offer">
+                        💳 Up to ₹3,000 bank discount
+                    </div>
+
+                    <p class="festival-small">
+                        No Cost EMI available
+                    </p>
+
+                </div>
+
+
+                <div class="festival-card">
+
+                    <div class="deal-tag">
+                        TOP DEAL
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80">
+
+                    <h3>Gaming Monitors</h3>
+
+                    <p class="starting">
+                        Starting from
+                    </p>
+
+                    <div class="festival-price">
+                        ₹8,999
+                    </div>
+
+                    <div class="festival-discount">
+                        Up to 40% off
+                    </div>
+
+                    <div class="bank-offer">
+                        💳 Extra ₹1,500 bank discount
+                    </div>
+
+                    <p class="festival-small">
+                        Limited stock
+                    </p>
+
+                </div>
+
+
+                <div class="festival-card">
+
+                    <div class="deal-tag">
+                        FESTIVE OFFER
+                    </div>
+
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80">
+
+                    <h3>Sofas & Furniture</h3>
+
+                    <p class="starting">
+                        Starting from
+                    </p>
+
+                    <div class="festival-price">
+                        ₹9,999
+                    </div>
+
+                    <div class="festival-discount">
+                        Up to 50% off
+                    </div>
+
+                    <div class="bank-offer">
+                        💳 Additional bank discounts
+                    </div>
+
+                    <p class="festival-small">
+                        Exchange offers available
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="festival-bottom">
+
+                <strong>
+                    Great Indian Festival starts 8 October
+                </strong>
+
+                <span>
+                    Deals revealed • Bank offers • Prime benefits • No Cost EMI
+                </span>
+
+                <button>
+                    Explore all deals
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PREVIOUSLY VIEWED -->
+
+        <section class="section">
+
+            <h2>Previously viewed</h2>
+
+            <div class="previous">
+
+
+                <div class="previous-card">
+
+                    <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=500&q=80">
+
+                    <h3>Wireless Speaker</h3>
+
+                    <p class="price">₹1,499</p>
+
+                    <p class="discount">20% off</p>
+
+                </div>
+
+
+                <div class="previous-card">
+
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80">
+
+                    <h3>Running Shoes</h3>
+
+                    <p class="price">₹2,299</p>
+
+                    <p class="discount">35% off</p>
+
+                </div>
+
+
+                <div class="previous-card">
+
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80">
+
+                    <h3>Modern Sofa</h3>
+
+                    <p class="price">₹18,999</p>
+
+                    <p class="discount">25% off</p>
+
+                </div>
+
+
+                <div class="previous-card">
+
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99e?auto=format&fit=crop&w=500&q=80">
+
+                    <h3>Digital Camera</h3>
+
+                    <p class="price">₹34,999</p>
+
+                    <p class="discount">15% off</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECOMMENDED DEALS -->
+
+        <section class="section">
+
+            <h2>Recommended deals for you</h2>
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <h3>Wireless Headphones</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80">
+
+                    <span class="tag">
+                        LIMITED TIME OFFER
+                    </span>
+
+                    <p class="price">
+                        ₹1,999
+                    </p>
+
+                    <p class="discount">
+                        45% off
+                    </p>
+
+                    <span class="link">
+                        Best Price Now →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Smart Watch</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80">
+
+                    <span class="tag">
+                        SELLING FAST
+                    </span>
+
+                    <p class="price">
+                        ₹2,499
+                    </p>
+
+                    <p class="discount">
+                        38% off
+                    </p>
+
+                    <span class="link">
+                        Deal of the Day →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Premium Sneakers</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80">
+
+                    <span class="tag">
+                        GREAT DEAL
+                    </span>
+
+                    <p class="price">
+                        ₹1,799
+                    </p>
+
+                    <p class="discount">
+                        50% off
+                    </p>
+
+                    <span class="link">
+                        Best Price Now →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Bluetooth Speaker</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=500&q=80">
+
+                    <span class="tag">
+                        SELLING FAST
+                    </span>
+
+                    <p class="price">
+                        ₹999
+                    </p>
+
+                    <p class="discount">
+                        55% off
+                    </p>
+
+                    <span class="link">
+                        Limited Time Offer →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ELECTRONICS -->
+
+        <section class="section">
+
+            <h2>Best deals on Electronics</h2>
+
+            <div class="category-row">
+
+
+                <div class="category-card">
+
+                    <h3>Headphones</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 60% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Smart Watches</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 45% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Speakers</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 50% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Cameras</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 35% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Gaming</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 40% off
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FASHION -->
+
+        <section class="section">
+
+            <h2>Fashion deals</h2>
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <h3>Men's Casual Shoes</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹1,499
+                    </p>
+
+                    <p class="discount">
+                        Up to 60% off
+                    </p>
+
+                    <span class="link">
+                        Shop Now →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Men's Jackets</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹1,899
+                    </p>
+
+                    <p class="discount">
+                        40% off
+                    </p>
+
+                    <span class="link">
+                        Explore deals →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Watches</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹2,999
+                    </p>
+
+                    <p class="discount">
+                        35% off
+                    </p>
+
+                    <span class="link">
+                        Shop Now →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Sunglasses</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹799
+                    </p>
+
+                    <p class="discount">
+                        50% off
+                    </p>
+
+                    <span class="link">
+                        Limited Time Offer →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOME AND FURNITURE -->
+
+        <section class="section">
+
+            <h2>Home & Furniture</h2>
+
+            <div class="category-row">
+
+
+                <div class="category-card">
+
+                    <h3>Sofas</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 50% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Home Decor</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 60% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Chairs</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 40% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Lamps</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 55% off
+                    </p>
+
+                </div>
+
+
+                <div class="category-card">
+
+                    <h3>Kitchen</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="discount">
+                        Up to 45% off
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MORE DEALS -->
+
+        <section class="section">
+
+            <h2>More deals you may like</h2>
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <h3>Backpacks</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹899
+                    </p>
+
+                    <p class="discount">
+                        45% off
+                    </p>
+
+                    <span class="link">
+                        Selling Fast →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Sports Equipment</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹1,299
+                    </p>
+
+                    <p class="discount">
+                        35% off
+                    </p>
+
+                    <span class="link">
+                        Best Price Now →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Kitchen Appliances</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹2,499
+                    </p>
+
+                    <p class="discount">
+                        30% off
+                    </p>
+
+                    <span class="link">
+                        Great Deal →
+                    </span>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Travel Accessories</h3>
+
+                    <img class="product-img"
+                        src="https://images.unsplash.com/photo-1565026057447-bc90a7d4e1a2?auto=format&fit=crop&w=500&q=80">
+
+                    <p class="price">
+                        ₹699
+                    </p>
+
+                    <p class="discount">
+                        50% off
+                    </p>
+
+                    <span class="link">
+                        Limited Time Offer →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- BACK TO TOP -->
+
+    <div class="back-top">
+        Back to top
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-columns">
+
+
+            <div class="footer-column">
+
+                <h3>Get to Know Us</h3>
+
+                <p>About Amazon</p>
+                <p>Careers</p>
+                <p>Press Releases</p>
+                <p>Amazon Science</p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Connect with Us</h3>
+
+                <p>Facebook</p>
+                <p>Twitter</p>
+                <p>Instagram</p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Make Money with Us</h3>
+
+                <p>Sell on Amazon</p>
+                <p>Sell under Amazon Accelerator</p>
+                <p>Protect and Build Your Brand</p>
+                <p>Amazon Global Selling</p>
+                <p>Supply to Amazon</p>
+                <p>Become an Affiliate</p>
+                <p>Fulfilment by Amazon</p>
+                <p>Advertise Your Products</p>
+                <p>Amazon Pay on Merchants</p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Let Us Help You</h3>
+
+                <p>Your Account</p>
+                <p>Returns Centre</p>
+                <p>100% Purchase Protection</p>
+                <p>Amazon App Download</p>
+                <p>Help</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="footer-logo">
+                amazon<span>.in</span>
+            </div>
+
+            <p class="copyright">
+                © 2026 Amazon Clone — Educational Project
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
